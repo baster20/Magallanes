@@ -53,7 +53,7 @@ class CopyTask extends AbstractTask
         if ('localhost' !== $host) {
             $cmdCopy = sprintf('scp -P %d %s %s %s@%s:%s/%s', $sshConfig['port'], $sshConfig['flags'], $tarLocal, $user, $host, $targetDir, $tarRemote);
         } else {
-            $cmdCopy = "cp -a $tarLocal/. $targetDir/$tarRemote";
+            $cmdCopy = "cp -a $tarLocal $targetDir/$tarRemote";
         }
         /** @var Process $process */
         $process = $this->runtime->runLocalCommand($cmdCopy, 300);
